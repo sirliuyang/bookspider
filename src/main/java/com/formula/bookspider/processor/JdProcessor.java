@@ -10,12 +10,16 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import java.util.List;
 
 public class JdProcessor implements PageProcessor {
-    private Site site = Site.me().setRetryTimes(3).setSleepTime(1000);
+    private Site site = Site.me().setRetryTimes(3).setSleepTime(2000);
 
     @Override
     public void process(Page page) {
+        System.out.println(page.getRequest());
+        page.addTargetRequests(page.getHtml().links().regex("https://www.jd.com.*").all());
+        /*
         List<String> books = page.getHtml().xpath("//div[@id='J_main']").xpath("//div[@id='J_main']").xpath("//div[@id='plist']").xpath("//li[@class='gl-item']").all();
         parseBooks(books);
+        */
     }
 
     @Override

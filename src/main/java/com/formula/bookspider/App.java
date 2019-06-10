@@ -1,6 +1,7 @@
 package com.formula.bookspider;
 
 import com.formula.bookspider.processor.JdProcessor;
+import com.formula.bookspider.processor.SMZProcessor;
 import us.codecraft.webmagic.Spider;
 import util.BookUrlGenerator;
 
@@ -17,6 +18,9 @@ public class App {
     private static String b11_14 = "http://list.jd.com/list.html?tid=1000925";
 
     public static void main(String[] args) {
+        String url = "https://faxian.smzdm.com";
+        Spider.create(new SMZProcessor()).addUrl(url).thread(10).run();
+        /*
         List<String> urls = new ArrayList<>();
         urls = BookUrlGenerator.getChildren0_2();
         for (String url : urls) {
@@ -25,6 +29,6 @@ public class App {
                     .thread(1)
                     .run();
         }
-
+        */
     }
 }
